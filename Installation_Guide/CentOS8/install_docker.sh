@@ -56,6 +56,10 @@ systemctl enable docker
 #Change mode of docker.sock
 chmod 666 /var/run/docker.sock
 
+#Hold update
+echo "exclude=docker-ce* docker-ce-cli* containerd.io" >> /etc/dnf/dnf.conf
+echo "exclude=docker-ce* docker-ce-cli* containerd.io" >> /etc/yum.conf
+
 echo "-- [Docker Installation: End Process] --"
 echo "-- [Docker-Compose Installation: Start Process] --"
 
