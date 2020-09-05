@@ -33,9 +33,6 @@ docker version
 #Change mode of poseidon user
 usermod -aG docker poseidon
 
-#Change mode of docker.sock
-chmod 666 /var/run/docker.sock
-
 #Setup daemon
 cat > /etc/docker/daemon.json <<EOF
 {
@@ -54,6 +51,10 @@ mkdir -p /etc/systemd/system/docker.service.d
 #Restart docker
 systemctl daemon-reload
 systemctl restart docker
+systemctl enable docker
+
+#Change mode of docker.sock
+chmod 666 /var/run/docker.sock
 
 echo "-- [Docker Installation: End Process] --"
 echo "-- [Docker-Compose Installation: Start Process] --"
