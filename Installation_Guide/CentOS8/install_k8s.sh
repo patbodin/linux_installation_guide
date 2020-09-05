@@ -43,6 +43,17 @@ systemctl start kubelet
 echo "exclude=kubelet* kubeadm* kubectl*" >> /etc/dnf/dnf.conf
 echo "exclude=kubelet* kubeadm* kubectl*" >> /etc/yum.conf
 
+#Show version
+echo "-- [Version of kubectl] --"
+kubectl version --client=true
+echo ""
+echo "-- [Version of kubelet] --"
+kubelet --version
+echo ""
+echo "-- [Version of kubeadm] --"
+kubeadm version
+echo ""
+
 echo "-- [Kubernetes Installation: End Process] --"
 
 ##########################################
