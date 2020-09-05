@@ -25,6 +25,7 @@ yum install docker-ce-3:18.09.1-3.el7 docker-ce-cli containerd.io
 
 #Start docker
 systemctl start docker
+systemctl enable docker
 
 #Show version of docker installed
 docker version
@@ -34,6 +35,25 @@ usermod -aG docker poseidon
 
 #Change mode of docker.sock
 chmod 666 /var/run/docker.sock
+
+#Setup daemon
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m",
+    "max-file": "10"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+#Restart docker
+systemctl daemon-reload
+systemctl restart docker
 
 echo "-- [Docker Installation: End Process] --"
 echo "-- [Docker-Compose Installation: Start Process] --"
