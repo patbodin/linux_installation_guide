@@ -33,11 +33,15 @@ EOF
 dnf update -y
 
 #Install all the necessary components for Kubernetes
-dnf install -y kubelet kubeadm kubectl kubernetes-cni --disableexcludes=kubernetes
+dnf install -y kubelet kubeadm kubectl kubernetes-cni --disableexcludes=kubernetes --nobest
 
 #Start k8s
 systemctl enable kubelet
 systemctl start kubelet
+
+#Hold update
+echo "exclude=kubelet* kubeadm* kubectl*" >> /etc/dnf/dnf.conf
+echo "exclude=kubelet* kubeadm* kubectl*" >> /etc/yum.conf
 
 echo "-- [Kubernetes Installation: End Process] --"
 
