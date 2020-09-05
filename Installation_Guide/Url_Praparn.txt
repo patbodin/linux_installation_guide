@@ -1,0 +1,5 @@
+https://github.com/praparn/kubernetes_202005.git
+
+https://github.com/praparn/docker-workshop-072020.git
+
+https://github.com/praparn/sourcesetup.git
