@@ -28,7 +28,9 @@ systemctl start docker
 systemctl enable docker
 
 #Show version of docker installed
+echo "-- [Version of docker] --"
 docker version
+echo ""
 
 #Change mode of poseidon user
 usermod -aG docker poseidon
@@ -59,6 +61,11 @@ chmod 666 /var/run/docker.sock
 #Hold update
 echo "exclude=docker-ce* docker-ce-cli* containerd.io" >> /etc/dnf/dnf.conf
 echo "exclude=docker-ce* docker-ce-cli* containerd.io" >> /etc/yum.conf
+
+#Show version of docker installed
+echo "-- [Status of docker] --"
+systemctl status docker
+echo ""
 
 echo "-- [Docker Installation: End Process] --"
 echo "-- [Docker-Compose Installation: Start Process] --"
