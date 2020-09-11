@@ -5,18 +5,18 @@
 # su -
 ######################
 
-#Install Docker
+#Install Kubernetes
 echo "-- [Kubernetes Installation] --"
 echo "-- [Kubernetes Installation: Start Process] --"
 
 #Make sure that all ports k8s uses are open by 
 #1) Disable firewall (to allow all ports) 
 #2) or Open ports that k8s uses
-#####Choice 1
+#####Choice 1 - Disable firewall
 #systemctl stop firewalld
 #systemctl disable firewalld
 
-#####Choice2
+#####Choice2 - Open ports that k8s uses
 firewall-cmd --permanent --add-port=6443/tcp
 firewall-cmd --permanent --add-port=2379-2380/tcp
 firewall-cmd --permanent --add-port=10250/tcp
